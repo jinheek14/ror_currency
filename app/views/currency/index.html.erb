@@ -1,0 +1,21 @@
+<h1>hello</h1>
+
+
+<script type="text/javascript">
+
+    $.ajax({
+
+url: 'https://currency-api.appspot.com/api/USD/EUR.jsonp',
+dataType: "jsonp",
+data: {amount: '1.00'},
+success: function(response) {
+
+if (response.success) {
+
+alert('1 USD is worth ' + parseFloat(response.rate).toFixed(2) + ' EUR');
+}
+}
+});
+
+</script>
+
