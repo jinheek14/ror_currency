@@ -1,10 +1,21 @@
 <h1>hello</h1>
-<input type="text" id="c1">
+<select name="source" id="sourceid">
+	<option value="">Select Source Currency</option>
+	<option value="CAD">Canada Dollar</option>
+	<option value="USD">US Dollar</option>
+	<option value="KRW">Korea Won</option>
+	<option value="">Select Source Currency</option>
+	<option value="">Select Source Currency</option>
+	<option value="">Select Source Currency</option>
+	<option value="">Select Source Currency</option>
+</select>
+
 <input type="text" id="c2">
 <button>Click</button>
 
 
 <div id="rate"></div>
+
 
 
 <script type="text/javascript">
@@ -13,15 +24,29 @@
 // var url = "https://sdw-wsrest.ecb.europa.eu/service/data/EXR/D."+c1+"."+c2+".SP00.A?startPeriod=2015-08-20&endPeriod=2015-08-31";
 
 // document.getElementById("rate").innerHTML = url;
+// var getCurrencyPair = function() {
 
+//   var url = 'http://rate-exchange.appspot.com/currency?from=usd&to=jpy'
+
+//   $.getJSON( url, function( data ) {
+//    confirm(data);
+//   });
+
+// };
 
 // var c1 = document.getElementById("c1");
 $(document).ready(function(){
 	$("button").click(function(){
-		var c1 = document.getElementById("c1").value;
+		// var c1 = document.getElementById("c1").value;
 		var c2 = document.getElementById("c2").value;
+		var c3 = document.getElementById("sourceid").value;
+		
+		// $("#rate").html(c3);
+		confirm(c3);
+
 		$.ajax({
-			url: 'https://currency-api.appspot.com/api/CAD/USD.jsonp',
+
+			url: 'https://currency-api.appspot.com/api/'+c3+'/USD.jsonp',
 			dataType: "jsonp",
 			data: {amount: '1.00'},
 			success: function(response) {
