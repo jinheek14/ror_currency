@@ -1,21 +1,62 @@
 <h1>hello</h1>
+<input type="text" id="c1">
+<input type="text" id="c2">
+<button>Click</button>
+
+
+<div id="rate"></div>
 
 
 <script type="text/javascript">
+// var c1 = document.getElementById("c1").value;
+// var c2 = document.getElementById("c1");
+// var url = "https://sdw-wsrest.ecb.europa.eu/service/data/EXR/D."+c1+"."+c2+".SP00.A?startPeriod=2015-08-20&endPeriod=2015-08-31";
 
-    $.ajax({
+// document.getElementById("rate").innerHTML = url;
 
-url: 'https://currency-api.appspot.com/api/USD/EUR.jsonp',
-dataType: "jsonp",
-data: {amount: '1.00'},
-success: function(response) {
 
-if (response.success) {
-
-alert('1 USD is worth ' + parseFloat(response.rate).toFixed(2) + ' EUR');
-}
-}
+// var c1 = document.getElementById("c1");
+$(document).ready(function(){
+	$("button").click(function(){
+		var c1 = document.getElementById("c1").value;
+		var c2 = document.getElementById("c2").value;
+		$.ajax({
+			url: 'https://currency-api.appspot.com/api/CAD/USD.jsonp',
+			dataType: "jsonp",
+			data: {amount: '1.00'},
+			success: function(response) {
+				if (response.success) {
+					$("#rate").html(response.rate);
+				}
+				else{
+					$("#rate").html("Failed to retrieve");
+				}
+			}
+		});
+	});
 });
+
+// function function1() {
+// 	var c1 = document.getElementById("c1").value;
+// 	var c2 = document.getElementById("c2").value;
+// 	alert(c1+c2);
+// 	document.write(c1,c2);
+// }
+
+// $.ajax({
+	
+// 	url: 'https://currency-api.appspot.com/api/CAD/USD.jsonp',
+// 	dataType: "jsonp",
+// 	data: {amount: '1.00'},
+// 	success: function(response) {
+
+// 		if (response.success) {
+			
+// 			$("#rate").html(response.rate);
+// 		}
+// 	}
+// });
 
 </script>
 
+<!-- https://sdw-wsrest.ecb.europa.eu/service/data/EXR/D.USD.EUR.SP00.A?startPeriod=2015-08-20&endPeriod=2015-08-31 -->
