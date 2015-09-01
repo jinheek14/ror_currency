@@ -1,52 +1,36 @@
+
+
 <h1>hello</h1>
-<select name="source" id="sourceid">
+<select name="source" id="country1">
 	<option value="">Select Source Currency</option>
-	<option value="CAD">Canada Dollar</option>
-	<option value="USD">US Dollar</option>
-	<option value="KRW">Korea Won</option>
-	<option value="">Select Source Currency</option>
-	<option value="">Select Source Currency</option>
-	<option value="">Select Source Currency</option>
-	<option value="">Select Source Currency</option>
+	<% @countrydatum.each do |country_data|%>
+		<option value=<%=country_data.countryCode%>><%=country_data.countryDescription%></option>
+	<% end %>	
 </select>
 
-<input type="text" id="c2">
+<select name="source" id="country2">
+	<option value="">Select Source Currency</option>
+	<% @countrydatum.each do |country_data|%>
+		<option value=<%=country_data.countryCode%>><%=country_data.countryDescription%></option>
+	<% end %>	
+</select>
 <button>Click</button>
-
-
 <div id="rate"></div>
 
 
 
 <script type="text/javascript">
-// var c1 = document.getElementById("c1").value;
-// var c2 = document.getElementById("c1");
-// var url = "https://sdw-wsrest.ecb.europa.eu/service/data/EXR/D."+c1+"."+c2+".SP00.A?startPeriod=2015-08-20&endPeriod=2015-08-31";
-
-// document.getElementById("rate").innerHTML = url;
-// var getCurrencyPair = function() {
-
-//   var url = 'http://rate-exchange.appspot.com/currency?from=usd&to=jpy'
-
-//   $.getJSON( url, function( data ) {
-//    confirm(data);
-//   });
-
-// };
-
-// var c1 = document.getElementById("c1");
 $(document).ready(function(){
 	$("button").click(function(){
 		// var c1 = document.getElementById("c1").value;
-		var c2 = document.getElementById("c2").value;
-		var c3 = document.getElementById("sourceid").value;
+		var c1 = document.getElementById("country1").value;
+		var c2 = document.getElementById("country2").value;
 		
-		// $("#rate").html(c3);
-		confirm(c3);
+		
 
 		$.ajax({
 
-			url: 'https://currency-api.appspot.com/api/'+c3+'/USD.jsonp',
+			url: 'https://currency-api.appspot.com/api/'+c1+'/'+c2+'.jsonp',
 			dataType: "jsonp",
 			data: {amount: '1.00'},
 			success: function(response) {
