@@ -20,21 +20,18 @@
 </div>
 
 <div class="container">
-	<br><br><br>
+	
 	<button class="btn btn-info">Click</button>	
+
+	<div id="rate"></div>
 </div>
-
-<div id="rate"></div>
-
-
 
 <script type="text/javascript">
 $(document).ready(function(){
 	$("button").click(function(){
-		// var c1 = document.getElementById("c1").value;
+		
 		var c1 = document.getElementById("country1").value;
 		var c2 = document.getElementById("country2").value;
-		
 		
 
 		$.ajax({
